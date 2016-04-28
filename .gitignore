@@ -1,0 +1,5 @@
+.idea/*
+*.swp
+*.iml
+.DS_STORE
+*tags
