@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<HTML>
+	%= include 'header'
+
+	<BODY>
+		<div id="root"></div>
+		<div id="error-modal" data-toggle="modal" data-target="#errorModal"></div>
+		<script type="text/babel" src="js/RSVPForm.js"></script>
+	</BODY>
+
+</HTML>
+
+
+
+
