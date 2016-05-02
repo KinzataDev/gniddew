@@ -2,7 +2,7 @@ var global_modal_callback = {
     callback: function() {}
 };
 
-var RSVPErrorModal = React.createClass({
+var RSVPModal = React.createClass({
 	componentWillMount() {
 		global_modal_callback.callback = () => {
 			this.setState({show:true});
@@ -28,15 +28,15 @@ var RSVPErrorModal = React.createClass({
 				aria-labelledby="contained-modal-title"
 			>
 				<Modal.Header closeButton>
-					<Modal.Title id="contained-modal-title">Error</Modal.Title>
+					<Modal.Title id="contained-modal-title">{this.props.title}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Alert bsStyle="danger">
+					<Alert bsStyle={this.props.alert}>
 						{this.props.content}
 					</Alert>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button onClick={close}>Sorry!</Button>
+					<Button onClick={close}>{this.props.close}</Button>
 				</Modal.Footer>
 			</Modal>
 			</div>
@@ -66,14 +66,21 @@ var RSVPForm = React.createClass({
 		  type: 'POST',
 		  data: { rsvp_code: rsvp_code },
 		  success: function(data) {
-			window.alert("success");
+			  this.setState({successString: "Thank you for submitting your RSVP!"});
+			  ReactDOM.render(
+			  	<RSVPModal content={this.state.successString} alert="success" title="Success" close="Thanks!"/>,
+				document.getElementById('response-modal')
+			  );
+			  if( global_modal_callback ) {
+				global_modal_callback.callback();
+			  }
 		  }.bind(this),
 		  error: function(xhr, status, err) {
-			  if( xhr.status == 404 ) {
+			  if( xhr.status != 200 ) {
 				  this.setState({errString: err.toString()});
 				  ReactDOM.render(
-				  	<RSVPErrorModal content={this.state.errString}/>,
-					document.getElementById('error-modal')
+				  	<RSVPModal content={this.state.errString} alert="danger" title="Error" close="Sorry!"/>,
+					document.getElementById('response-modal')
 				  );
 				  if( global_modal_callback ) {
 					global_modal_callback.callback();

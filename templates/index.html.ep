@@ -4,7 +4,7 @@
 
 	<BODY>
 		<div id="root"></div>
-		<div id="error-modal" data-toggle="modal" data-target="#errorModal"></div>
+		<div id="response-modal" data-toggle="modal" data-target="#responseModal"></div>
 		<script type="text/babel" src="js/RSVPForm.js"></script>
 	</BODY>
 

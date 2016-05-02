@@ -37,7 +37,25 @@ post '/rsvpsubmit' => sub {
 		$c->rendered(404);
 	}
 
+	# Make sure that the row with that rsvp_code exists
+	my $res = $c->rsvp->select($rsvp_code);
+	if( $res->affected_rows == 0 ) {
+		$c->res->message('RSVP Code not found, please make sure you entered it correctly.');
+		$c->rendered(404);
+		return;
+	}
 
+	my $rsvp = $res->hash;
+
+	$res = $c->rsvp->post_response($rsvp_code,$c->req->params);
+	if( $res->affected_rows == 0 ) {
+		$c->res->message('Something went wrong... Let Max know you (he) broke his website.');
+		$c->rendered(500);
+		return;
+	}
+	else {
+    	$c->render( json => { status => 200, success => 1 } );
+	}
 };
 
 app->start;
