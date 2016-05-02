@@ -11,6 +11,11 @@ use DDP;
 use Wedding::Config;
 use Wedding;
 
+use Wedding::Model::RSVP;
+
+helper mysql => sub { state $mysql = Wedding->_mysql };
+helper rsvp => sub { state $rsvp = Wedding::Model::RSVP->new( mysql => shift->mysql ) };
+
 get '/' => sub {
 	my $c = shift;
 
@@ -20,15 +25,7 @@ get '/' => sub {
 get '/rsvp' => sub {
 	my $c = shift;
 
-	my $rs = Wedding->_schema->resultset('Rsvp')->search();
-
-	my $data;
-	foreach my $row ( $rs->all() ) {
-		my %hash = $row->get_columns();
-		push @{$data}, \%hash;
-	}
-
-	$c->render( json => $data );
+	$c->render( json => $c->rsvp->rsvps );
 };
 
 post '/rsvpsubmit' => sub {
