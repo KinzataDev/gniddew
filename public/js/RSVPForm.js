@@ -46,25 +46,39 @@ var RSVPModal = React.createClass({
 
 var RSVPForm = React.createClass({
 	getInitialState: function() {
-		return { rsvp_code: '' };
+		return { rsvp_code: '', attendee_count: -1, attendee_names: {}};
 	},
 	handleCodeChange: function(e) {
 		this.setState({rsvp_code: e.target.value});
 	},
+	handleCountChange: function(e) {
+		this.setState({attendee_count: e.target.value});
+	},
+	handleAttendeeChange: function(e) {
+		var names = this.state.attendee_names;
+		names[e.target.id] = e.target.value;
+		this.setState({attendee_names: names});
+	},
 	handleSubmit: function(e) {
 		e.preventDefault();
 		var rsvp_code = this.state.rsvp_code.trim();
+		var attendee_count = this.state.attendee_count;
+		var attendee_names = JSON.stringify(this.state.attendee_names);
 		if( !rsvp_code ) {
 			return;
 		}
+		if( attendee_count == -1 ) {
+			return;
+		}
 		console.log( rsvp_code );
-		this.setState({rsvp_code: ''});
+		console.log( attendee_count );
+		console.log( attendee_names );
 
 		$.ajax({
 		  url: this.props.url,
 		  dataType: 'json',
 		  type: 'POST',
-		  data: { rsvp_code: rsvp_code },
+		  data: { rsvp_code: rsvp_code, attendee_count: attendee_count, attendee_names: attendee_names },
 		  success: function(data) {
 			  this.setState({successString: "Thank you for submitting your RSVP!"});
 			  ReactDOM.render(
@@ -91,6 +105,13 @@ var RSVPForm = React.createClass({
 		});
 	},
 	render: function() {
+		var rows = [];
+		if( this.state.attendee_count > 0 ) {
+			for( var i=0; i<this.state.attendee_count; i++ ) {
+				var key = "name_" + (i+1); // First name is 0th record
+				rows.push(<input type="text" className="form-control" onChange={this.handleAttendeeChange} key={key} id={key}/>);
+			}
+		}
 		return (
 			<form className="rsvpForm" onSubmit={this.handleSubmit}>
 				<div className="form-group">
@@ -101,8 +122,14 @@ var RSVPForm = React.createClass({
 						value={this.state.rsvp_code}
 						onChange={this.handleCodeChange}
 					/>
-				</div>
-				<div className="form-group">
+					<select type="select" className="form-control" onChange={this.handleCountChange} key="count">
+					    <option value="-1">How many attendees?</option>
+					    <option value="0">We will not be attending</option>
+					    <option value="1">One</option>
+					    <option value="2">Two</option>
+					    <option value="3">Three</option>
+					</select>
+					{rows}
 					<input type="submit" className="btn btn-primary" value="Send RSVP"/>
 				</div>
 			</form>

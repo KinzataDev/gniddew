@@ -13,7 +13,7 @@ class_has '_schema' => (
 	lazy    => 1,
 	default => sub {
 		require Wedding::Schema;
-		return Wedding::Schema->connect( @{Wedding::Config->_config->{connect_info}} );
+		return Wedding::Schema->connect( @{Wedding::Config->_config->{orm_connect_info}} );
 	},
 );
 
