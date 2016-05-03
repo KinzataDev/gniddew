@@ -4,3 +4,32 @@
 .modal-container .modal, .modal-container .modal-backdrop {
 	  position: absolute;
 }
+
+.form-group {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-control {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+input {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.nav,.nav-tabs {
+	display: block;
+	text-align: center;
+}
+
+.nav>li {
+	display: inline-block;
+	float: none;
+}

@@ -2,10 +2,30 @@
 <HTML>
 	%= include 'header'
 
+	<script type="text/babel" src="js/RSVPForm.js"></script>
+	<script type="text/babel" src="js/Header.jsx"></script>
+
 	<BODY>
-		<div id="root"></div>
-		<div id="response-modal" data-toggle="modal" data-target="#responseModal"></div>
-		<script type="text/babel" src="js/RSVPForm.js"></script>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Rachel Erin Dubinski<br/>
+				<small>and</small><br/>
+				Maximilian Thomas Witte</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div id="header-root"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				%= include 'footer'
+			</div>
+		</div>
+	</div>
+
+	<div id="response-modal" data-toggle="modal" data-target="#responseModal"></div>
+
 	</BODY>
 
 </HTML>

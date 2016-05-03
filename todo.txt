@@ -1,4 +1,5 @@
-Refactor RSVP POST to disallow double posts
+-Refactor RSVP POST to disallow double posts
 Refactor validation and inserts to the tables
 Add dietary concerns to form
 Build HTML table to view RSVPs
+Add some CSS and Bootstrap structure to the site

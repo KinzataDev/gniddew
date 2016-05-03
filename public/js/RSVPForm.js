@@ -113,32 +113,37 @@ var RSVPForm = React.createClass({
 			}
 		}
 		return (
-			<form className="rsvpForm" onSubmit={this.handleSubmit}>
-				<div className="form-group">
-					<input
-						type="text"
-						className="form-control"
-						placeholder="RSVP Code"
-						value={this.state.rsvp_code}
-						onChange={this.handleCodeChange}
-					/>
-					<select type="select" className="form-control" onChange={this.handleCountChange} key="count">
-					    <option value="-1">How many attendees?</option>
-					    <option value="0">We will not be attending</option>
-					    <option value="1">One</option>
-					    <option value="2">Two</option>
-					    <option value="3">Three</option>
-					</select>
-					{rows}
-					<input type="submit" className="btn btn-primary" value="Send RSVP"/>
-				</div>
-			</form>
+			<div>
+			<div className="col-xs-2"></div>
+			<div className="col-xs-8">
+				<form className="rsvpForm" onSubmit={this.handleSubmit}>
+					<div className="form-group">
+						<label>Enter RSVP Code</label>
+						<input
+							type="text"
+							className="form-control"
+							placeholder="RSVP Code"
+							value={this.state.rsvp_code}
+							onChange={this.handleCodeChange}
+						/>
+						<label>Please select the number of attendees</label>
+						<select type="select" className="form-control" onChange={this.handleCountChange} key="count">
+							<option value="-1">How many attendees?</option>
+							<option value="0">We will not be attending</option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						</select>
+						{rows}
+						<input type="submit" className="btn btn-primary" value="Send RSVP"/>
+					</div>
+				</form>
+			</div>
+			<div className="col-xs-2"></div>
+			</div>
 		);
 	}
 });
 
-
-ReactDOM.render(
-  <RSVPForm url="/rsvpsubmit"/>,
-  document.getElementById('root')
-);
+window.__Wedding__ = window.__Wedding__ || {};
+window.__Wedding__.RSVPForm = RSVPForm;

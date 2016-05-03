@@ -2,16 +2,24 @@ package Wedding::Model::RSVP;
 
 use Mojo::Base -base;
 use Wedding::Model::RSVPAttendee;
+use Wedding;
 
 has 'mysql';
 has 'rsvp_attendee';
-
-#ee => sub { state $attendee = Wedding::Model::RSVPAttendee->new( mysql => shift->mysql ) };
 
 sub rsvps { shift->mysql->db->query('select * from rsvp')->hashes }
 sub rsvp {
 	my $self = shift;
 	my $rsvp_code = shift;
+
+#	my $test = 1;
+#	my $data = ${Wedding->_schema->resultset('Rsvp')->search({rsvp_code => $rsvp_code, rsvp_id => $test})->as_query()};
+#	use DDP; p $data;
+#	my $query = shift $data;
+#	my @bind = @{$data};
+#	use DDP; p $query; p @bind;
+#	return \@bind;
+
 	return $self->mysql->db->query('select * from rsvp where rsvp_id = ?', $rsvp_code)->hash;
 }
 
@@ -56,7 +64,7 @@ sub post_response {
 		/]
 	};
 
-    my $info = $self->mysql->db->query(    #
+    my $update = $self->mysql->db->query(    #
 		qq{
         UPDATE rsvp SET
 			has_responded = ?,
@@ -79,7 +87,7 @@ sub post_response {
 		$self->rsvp_attendee->insert($attendee_data);
 	}
 
-	return $info;
+	return $update;
 }
 
 1;
