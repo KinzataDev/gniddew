@@ -83,6 +83,12 @@ post '/rsvpsubmit' => sub {
 		return;
 	}
 
+	if( $res->hash->{has_responded} ) {
+		$c->res->message('We already have an RSVP for this code.');
+		$c->rendered(403);
+		return;
+	}
+
 	$data->{rsvp_id} = $res->hash->{rsvp_id};
 
 	# Post data
