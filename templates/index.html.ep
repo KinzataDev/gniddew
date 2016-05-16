@@ -17,11 +17,7 @@
 		<div class="row">
 			<div id="header-root"></div>
 		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				%= include 'footer'
-			</div>
-		</div>
+		%= include 'footer'
 	</div>
 
 	<div id="response-modal" data-toggle="modal" data-target="#responseModal"></div>
