@@ -135,7 +135,7 @@ var RSVPForm = React.createClass({
 							<option value="3">Three</option>
 						</select>
 						{rows}
-						<input type="submit" className="btn btn-primary" value="Send RSVP"/>
+						<input type="submit" value="Send RSVP"/>
 					</div>
 				</form>
 			</div>

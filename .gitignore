@@ -4,3 +4,5 @@
 .DS_STORE
 *tags
 public/react/*
+*.sass-cache
+*.css.map

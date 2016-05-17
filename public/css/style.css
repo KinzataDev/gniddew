@@ -1,41 +1,81 @@
-.modal-container {
-	  position: relative;
-}
-.modal-container .modal, .modal-container .modal-backdrop {
-	  position: absolute;
-}
-
-.form-group {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.form-control {
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
-
-input {
-	margin-top: 6px;
-	margin-bottom: 6px;
-}
+body {
+  font-size: 1.2em;
+  line-height: 1.5;
+  text-align: center; }
+  @media (min-width: 64em) {
+    body {
+      font-size: 1.3em;
+      line-height: 1.8; } }
+  @media (min-width: 85.375em) {
+    body {
+      font-size: 1.4em;
+      line-height: 1.8; } }
+  @media (min-width: 120em) {
+    body {
+      font-size: 1.5em;
+      line-height: 1.95; } }
 
 h1 {
-	text-align: center;
-}
+  font-size: 3em;
+  line-height: 1.05; }
+  @media (min-width: 64em) {
+    h1 {
+      font-size: 3.2em; } }
+  @media (min-width: 85.375em) {
+    h1 {
+      font-size: 3.4em; } }
+  @media (min-width: 120em) {
+    h1 {
+      font-size: 3.6em; } }
 
-.nav,.nav-tabs {
-	display: block;
-	text-align: center;
-}
+.container {
+  margin: 0 4%;
+  width: auto;
+  position: relative; }
+  @media (min-width: 64em) {
+    .container {
+      margin: 0 8%; } }
+  @media (min-width: 85.375em) {
+    .container {
+      margin: 0 12%; } }
+  @media (min-width: 120em) {
+    .container {
+      margin: 0 18%; } }
 
-.nav>li {
-	display: inline-block;
-	float: none;
-}
+.modal-container {
+  position: relative; }
 
-.footer {
-	position: fixed;
-	bottom: 30px;
-	width: inherit;
-}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute; }
+
+form {
+  text-align: left; }
+  form * {
+    margin: 5px; }
+  form input {
+    padding: 5px 10px;
+    background-color: white;
+    border-style: groove;
+    border-radius: 3px; }
+
+img.core-img {
+  max-width: 100%; }
+  @media (min-width: 64em) {
+    img.core-img {
+      max-width: 85.375em; } }
+  @media (min-width: 85.375em) {
+    img.core-img {
+      max-width: 120em; } }
+
+.buffer {
+  padding-top: 15px; }
+
+.nav, .nav-tabs {
+  display: block;
+  text-align: center; }
+
+.nav > li {
+  display: inline-block;
+  float: none; }
+
+/*# sourceMappingURL=style.css.map */

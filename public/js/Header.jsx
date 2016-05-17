@@ -1,4 +1,5 @@
 var RSVPForm = window.__Wedding__.RSVPForm;
+var HomeContent = window.__Wedding__.HomeContent;
 
 var NavBar = React.createClass({
 	getInitialState: function() {
@@ -9,7 +10,7 @@ var NavBar = React.createClass({
 		var Tab = ReactBootstrap.Tab;
 		return (
 			<Tabs defaultActionKey={1} id="Main Tab" >
-				<Tab eventKey={1} title="Home" >Home Content</Tab>
+				<Tab eventKey={1} title="Home" > <HomeContent /></Tab>
 				<Tab eventKey={2} title="RSVP" > <RSVPForm url="/rsvpsubmit" /></Tab>
 			</Tabs>
 		);

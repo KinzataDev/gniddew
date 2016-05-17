@@ -3,7 +3,7 @@
 	<title>R&M</title>
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!--	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
 
 <!--	React and Core-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
