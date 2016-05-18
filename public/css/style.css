@@ -72,4 +72,11 @@ img.core-img {
   display: inline-block;
   float: none; }
 
+.vertical-split-right {
+  border-right: 4px solid #AAAAAA;
+}
+
+.vertical-split-left {
+  border-left: 4px solid #666666;
+}
 /*# sourceMappingURL=style.css.map */

@@ -4,6 +4,8 @@
 
 	<script type="text/babel" src="js/RSVPForm.js"></script>
 	<script type="text/babel" src="js/HomeContent.js"></script>
+	<script type="text/babel" src="js/LocationContent.jsx"></script>
+	<script type="text/babel" src="js/TimelineContent.jsx"></script>
 	<script type="text/babel" src="js/Header.jsx"></script>
 
 	<body>
