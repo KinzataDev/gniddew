@@ -42,12 +42,6 @@ h1 {
     .container {
       margin: 0 18%; } }
 
-.modal-container {
-  position: relative; }
-
-.modal-container .modal, .modal-container .modal-backdrop {
-  position: absolute; }
-
 form {
   text-align: left; }
   form * {

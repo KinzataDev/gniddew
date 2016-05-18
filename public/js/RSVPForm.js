@@ -1,29 +1,18 @@
-var global_modal_callback = {
-    callback: function() {}
-};
-
 var RSVPModal = React.createClass({
-	componentWillMount() {
-		global_modal_callback.callback = () => {
-			this.setState({show:true});
-		};
-	},
 	getInitialState() {
-    	return { show: true };
+    	return { show: false };
   	},
-  	render() {
+  render() {
 		var Alert = ReactBootstrap.Alert;
 		var Modal = ReactBootstrap.Modal;
 		var Button = ReactBootstrap.Button;
-		let close = () => {
-			this.setState({show:false});
-		}
 
 		return (
-			<div className="modal-container" style={{height: 200}}>
+			//<div className="modal-container" style={{height: 200}}>
+			<div className="modal-container" >
 			<Modal
-				show={this.state.show}
-				onHide={close}
+				show={this.props.show}
+				onHide={this.props.closeHandler}
 				container={this}
 				aria-labelledby="contained-modal-title"
 			>
@@ -36,7 +25,7 @@ var RSVPModal = React.createClass({
 					</Alert>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button onClick={close}>{this.props.close}</Button>
+					<Button onClick={this.props.closeHandler}>{this.props.close}</Button>
 				</Modal.Footer>
 			</Modal>
 			</div>
@@ -59,6 +48,9 @@ var RSVPForm = React.createClass({
 		names[e.target.id] = e.target.value;
 		this.setState({attendee_names: names});
 	},
+  handleModalClose: function(e) {
+    this.setState({modalShow: 0})
+  },
 	handleSubmit: function(e) {
 		e.preventDefault();
 		var rsvp_code = this.state.rsvp_code.trim();
@@ -80,25 +72,19 @@ var RSVPForm = React.createClass({
 		  type: 'POST',
 		  data: { rsvp_code: rsvp_code, attendee_count: attendee_count, attendee_names: attendee_names },
 		  success: function(data) {
-			  this.setState({successString: "Thank you for submitting your RSVP!"});
-			  ReactDOM.render(
-			  	<RSVPModal content={this.state.successString} alert="success" title="Success" close="Thanks!"/>,
-				document.getElementById('response-modal')
-			  );
-			  if( global_modal_callback ) {
-				global_modal_callback.callback();
-			  }
+        this.setState({modalShow: 1});
+			  this.setState({modalContent: "Thank you for submitting your RSVP!"});
+        this.setState({modalAlert: "success"});
+        this.setState({modalTitle: "Success"});
+        this.setState({modalCloseButton: "Thanks!"});
 		  }.bind(this),
 		  error: function(xhr, status, err) {
 			  if( xhr.status != 200 ) {
-				  this.setState({errString: err.toString()});
-				  ReactDOM.render(
-				  	<RSVPModal content={this.state.errString} alert="danger" title="Error" close="Sorry!"/>,
-					document.getElementById('response-modal')
-				  );
-				  if( global_modal_callback ) {
-					global_modal_callback.callback();
-				  }
+          this.setState({modalShow: 1});
+				  this.setState({modalContent: err.toString()});
+          this.setState({modalAlert: "danger"});
+          this.setState({modalTitle: "Error"});
+          this.setState({modalCloseButton: "Sorry!"});
 			  }
 			console.error(this.props.url, status, err.toString());
 		  }.bind(this)
@@ -114,6 +100,14 @@ var RSVPForm = React.createClass({
 		}
 		return (
 			<div>
+			<RSVPModal
+        show={this.state.modalShow}
+        content={this.state.modalContent}
+        alert={this.state.modalAlert}
+        title={this.state.modalTitle}
+        close={this.state.modalCloseButton}
+        closeHandler={this.handleModalClose}
+      />
 			<div className="col-xs-2"></div>
 			<div className="col-xs-8">
 				<form className="rsvpForm" onSubmit={this.handleSubmit}>

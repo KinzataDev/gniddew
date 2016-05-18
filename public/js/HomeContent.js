@@ -23,4 +23,3 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elementum viver
 
 window.__Wedding__ = window.__Wedding__ || {};
 window.__Wedding__.HomeContent = HomeContent;
-
