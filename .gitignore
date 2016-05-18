@@ -7,3 +7,4 @@ public/react/*
 *.sass-cache
 *.css.map
 wedding.conf
+local/*
