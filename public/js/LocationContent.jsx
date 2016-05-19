@@ -5,8 +5,13 @@ var LocationContent = React.createClass({
         <h2>Cuvee Champagne Lounge</h2>
         <div className="row">
           <div className="col-xs-6 vertical-split-right">
-            <h3>Google Map</h3>
-            Embedded map goes here.
+            <p>Enter building, take elevator in the back to the third floor.</p>
+            <iframe
+              width="450"
+              height="250"
+              frameBorder="0" style={{border:0}}
+              src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBiHjleP09CeFXW8mlt1XwY-1cHjZEZzJU&q=Cuvee,Milwaukee,WI">
+            </iframe>
           </div>
           <div className="col-xs-6 vertical-split-left">
             <h3>Parking Info</h3>

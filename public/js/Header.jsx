@@ -2,6 +2,8 @@ var RSVPForm = window.__Wedding__.RSVPForm;
 var HomeContent = window.__Wedding__.HomeContent;
 var LocationContent = window.__Wedding__.LocationContent;
 var TimelineContent = window.__Wedding__.TimelineContent;
+var AccomodationsContent = window.__Wedding__.AccomodationsContent;
+var RegistriesContent = window.__Wedding__.RegistriesContent;
 
 var NavBar = React.createClass({
 	getInitialState: function() {
@@ -15,7 +17,9 @@ var NavBar = React.createClass({
 				<Tab eventKey={1} title="Home" > <HomeContent /></Tab>
 				<Tab eventKey={2} title="Location" ><LocationContent /></Tab>
 				<Tab eventKey={3} title="Timeline" ><TimelineContent /></Tab>
- 				<Tab eventKey={4} title="RSVP" > <RSVPForm url="/rsvpsubmit" /></Tab>
+				<Tab eventKey={4} title="Accomodations" ><AccomodationsContent /></Tab>
+				<Tab eventKey={5} title="Registries" ><RegistriesContent /></Tab>
+ 				<Tab eventKey={6} title="RSVP" > <RSVPForm url="/rsvpsubmit" /></Tab>
 			</Tabs>
 		);
 	}

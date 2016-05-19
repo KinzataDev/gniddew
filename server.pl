@@ -5,6 +5,7 @@ use lib "$FindBin::Bin/lib";
 use Mojo::UserAgent;
 use Mojolicious::Lite;
 use Mojo::Exception;
+use Mojolicious::Static;
 use Mojo::JSON qw/ encode_json decode_json/;
 use Data::FormValidator;
 use DDP;
@@ -26,9 +27,7 @@ helper rsvp => sub {
 };
 
 get '/' => sub {
-	my $c = shift;
-
-	$c->render( template => 'index' );
+	shift->reply->static('index.html');
 };
 
 get '/rsvp' => sub {
