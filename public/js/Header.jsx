@@ -13,7 +13,7 @@ var NavBar = React.createClass({
 		var Tabs = ReactBootstrap.Tabs;
 		var Tab = ReactBootstrap.Tab;
 		return (
-			<Tabs defaultActionKey={1} id="Main Tab" >
+			<Tabs defaultActionKey={1} className="bg-pink" id="Main Tab" >
 				<Tab eventKey={1} title="Home" > <HomeContent /></Tab>
 				<Tab eventKey={2} title="Location" ><LocationContent /></Tab>
 				<Tab eventKey={3} title="Timeline" ><TimelineContent /></Tab>

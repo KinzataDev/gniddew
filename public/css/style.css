@@ -1,6 +1,16 @@
+@charset "UTF-8";
 body {
   font-size: 1.2em;
+  text-align: center;
   line-height: 1.5;
+  color: #EDE1E1;
+  background-image: url("../img/ASP-RME16-105.jpg");
+  background-attachment: fixed;
+  background-color: rgba(237, 225, 225, 0.2);
+  background-size: cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-blend-mode: screen;
   text-align: center; }
   @media (min-width: 64em) {
     body {
@@ -28,6 +38,38 @@ h1 {
     h1 {
       font-size: 3.6em; } }
 
+.bg-white {
+  background-color: white; }
+
+.bg-pink {
+  background-color: #ede1e1; }
+
+.bg-brown {
+  background-color: rgba(162, 141, 128, 0.6); }
+
+.bg-li-gray {
+  background-color: #A4A39A; }
+
+.text-white {
+  color: white; }
+
+.text-green {
+  color: #6B857C; }
+
+hr {
+  color: #EDE1E1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0px;
+  background-color: rgba(162, 141, 128, 0.6);
+  border-top: none; }
+
+hr:after {
+  content: "~~~~~~~~❖~~~~~~~~";
+  display: inline-block;
+  position: relative;
+  top: -0.9em; }
+
 .container {
   margin: 0 4%;
   width: auto;
@@ -42,6 +84,12 @@ h1 {
     .container {
       margin: 0 18%; } }
 
+.modal-container {
+  position: relative; }
+
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute; }
+
 form {
   text-align: left; }
   form * {
@@ -51,6 +99,13 @@ form {
     background-color: white;
     border-style: groove;
     border-radius: 3px; }
+
+h1 small {
+  color: inherit; }
+
+img {
+  padding-top: 1em;
+  padding-bottom: 1em; }
 
 img.core-img {
   max-width: 100%; }
@@ -72,11 +127,4 @@ img.core-img {
   display: inline-block;
   float: none; }
 
-.vertical-split-right {
-  border-right: 4px solid #AAAAAA;
-}
-
-.vertical-split-left {
-  border-left: 4px solid #666666;
-}
 /*# sourceMappingURL=style.css.map */
