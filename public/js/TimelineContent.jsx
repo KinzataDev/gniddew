@@ -17,7 +17,7 @@ var TimelineContent = React.createClass({
     data.map(function(row){
       var k = row.key;
       rows.push(
-        <div className="row">
+        <div className="row" key={row.key}>
           <div className="col-xs-6 vertical-split-right">
               {row.key}
           </div>

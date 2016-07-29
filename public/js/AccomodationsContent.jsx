@@ -37,7 +37,7 @@ var AccomodationsContent = React.createClass({
 
 	hotel_data.map(function(row){
 		hotel_rows.push(
-			<div class="hotel-row">
+			<div className="hotel-row" key={row.name}>
 			<h4>{row.name}</h4>
 			<p>
 			<a href={row.advisor_url}>Trip Advisor</a> | <a href={row.hotel_url}>Website</a><br/>
@@ -55,7 +55,7 @@ var AccomodationsContent = React.createClass({
         <p>
 			There are many hotels in downtown Milwaukee.  Here are a few but they may not be the closest.  Just the top listed Trip Advisor hotels.
 		</p>
-		<div class="hotel-info">
+		<div className="hotel-info">
 		<hr/>
 		{hotel_rows}
 		</div>

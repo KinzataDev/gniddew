@@ -4,23 +4,16 @@ use Mojo::Base -base;
 use Wedding::Model::RSVPAttendee;
 use Wedding;
 
-has 'mysql';
-has 'rsvp_attendee';
+#has 'mysql';
+#has 'rsvp_attendee';
+has 'firebase';
 
-sub rsvps { shift->mysql->db->query('select * from rsvp')->hashes }
+sub rsvps { return shift->firebase->get('rsvp'); }
 sub rsvp {
 	my $self = shift;
 	my $rsvp_code = shift;
 
-#	my $test = 1;
-#	my $data = ${Wedding->_schema->resultset('Rsvp')->search({rsvp_code => $rsvp_code, rsvp_id => $test})->as_query()};
-#	use DDP; p $data;
-#	my $query = shift $data;
-#	my @bind = @{$data};
-#	use DDP; p $query; p @bind;
-#	return \@bind;
-
-	return $self->mysql->db->query('select * from rsvp where rsvp_id = ?', $rsvp_code)->hash;
+	return $self->firebase->get('rsvp/' . $rsvp_code);
 }
 
 sub select_with_rsvp_code {
@@ -48,46 +41,24 @@ sub post_response {
 
 	$data->{has_responded} = 1;
 
-	my $rsvp_form = {
-		required => [qw/
-			has_responded
-			is_coming
-		/]
-	};
-
-	my $attendee_form = {
-		required => [qw/
-			rsvp_id
-			first_name
-			last_name
-			display_name
-		/]
-	};
-
-    my $update = $self->mysql->db->query(    #
-		qq{
-        UPDATE rsvp SET
-			has_responded = ?,
-			is_coming = ?
-		WHERE rsvp_code = ?
-		}
-		,
-		$data->{has_responded},
-		$data->{is_coming},
-        $rsvp_code,
-    );
+	$self->firebase->patch("rsvp/$rsvp_code", {
+		has_responded => $data->{has_responded},
+		is_coming => $data->{is_coming},
+		attendees => $data->{attendee_names}
+	});
 
 	foreach my $key ( keys %{$data->{attendee_names}} ) {
 		my $name = $data->{attendee_names}{$key};
 		my $attendee_data = {
-			rsvp_id => $data->{rsvp_id},
-			display_name => $name
+			rsvp_code => $rsvp_code,
+			display_name => $name,
+			rsvp_code_url => "rsvp/$rsvp_code"
 		};
 
-		$self->rsvp_attendee->insert($attendee_data);
+		$self->firebase->patch("attendees/$name", $attendee_data);
 	}
 
-	return $update;
+	return 1;
 }
 
 1;

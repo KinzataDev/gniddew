@@ -11,6 +11,8 @@ orm_connect_info dbi:mysql:wedding
 orm_connect_info <user>
 orm_connect_info <pass>
 
+firebase_url <url>
+
 # dbic loader options
 <loader_options>
     dump_directory ./lib

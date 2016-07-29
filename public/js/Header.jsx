@@ -19,7 +19,7 @@ var NavBar = React.createClass({
 				<Tab eventKey={3} title="Timeline" ><TimelineContent /></Tab>
 				<Tab eventKey={4} title="Accomodations" ><AccomodationsContent /></Tab>
 				<Tab eventKey={5} title="Registries" ><RegistriesContent /></Tab>
- 				<Tab eventKey={6} title="RSVP" > <RSVPForm url="/rsvpsubmit" /></Tab>
+ 				<Tab eventKey={6} title="RSVP" > <RSVPForm code_url="/rsvp" submit_url="/rsvpsubmit" /></Tab>
 			</Tabs>
 		);
 	}
