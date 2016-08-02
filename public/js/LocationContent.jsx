@@ -12,9 +12,8 @@ var LocationContent = React.createClass({
               frameBorder="0" style={{border:0}}
               src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBiHjleP09CeFXW8mlt1XwY-1cHjZEZzJU&q=Cuvee,Milwaukee,WI">
             </iframe>
-          </div>
-		  <hr/>
-          <div className="col-xs-12">
+			<br/>
+		  	<hr/>
             <h3>Parking Info</h3>
 			<p>There is a major parking structure just around the corner from Cuvee.</p>
 

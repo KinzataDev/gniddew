@@ -4,6 +4,7 @@ var RegistriesContent = React.createClass({
     return (
       <div className="col-xs-12 buffer">
         <h2>Registries</h2>
+		<p>Check back later!</p>
       </div>
     );
   }

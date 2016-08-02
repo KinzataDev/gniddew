@@ -1,17 +1,7 @@
 schema_class Wedding::Schema
 
-# connection string
- <connect_info>
-    dsn     dbi:mysql:wedding
-    db      localhost/wedding
-    user    <user>
-    pass    <pass>
-</connect_info>
-orm_connect_info dbi:mysql:wedding
-orm_connect_info <user>
-orm_connect_info <pass>
-
 firebase_url <url>
+firebase_secret <secret>
 
 # dbic loader options
 <loader_options>
