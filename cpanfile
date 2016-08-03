@@ -5,3 +5,4 @@ requires 'Firebase';
 requires 'DDP';
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
+requires 'IO::Socket::SSL';
