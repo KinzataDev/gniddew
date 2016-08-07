@@ -4,7 +4,7 @@ var HomeContent = React.createClass({
 		return (
 			<div>
 			<div className="col-xs-12 buffer">
-				<img className="core-img" src="http://placehold.it/900x400"></img>
+				<img className="core-img" src="img/ASP-RME16-105-cropped.jpg"></img>
 				<hr/>
 				<h3>Please join us for our wedding celebration</h3>
 				<h2>September 2nd, 2017</h2>
