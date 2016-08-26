@@ -81,6 +81,12 @@ hr {
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute; }
 
+.top-padding {
+  padding-top: 1em; }
+
+.detail-content {
+  text-align: left; }
+
 form {
   text-align: left; }
   form * {

@@ -150,6 +150,14 @@ hr {
 	  position: absolute;
 }
 
+.top-padding {
+	padding-top: 1em;
+}
+
+.detail-content {
+	text-align: left;
+}
+
 form {
 	text-align: left;
 	* {
@@ -168,6 +176,7 @@ form {
 h1 small {
 	color: inherit;
 }
+
 
 img {
 	padding-top: 1em;
