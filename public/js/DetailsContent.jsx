@@ -1,4 +1,4 @@
-var LocationContent = React.createClass({
+var DetailsContent = React.createClass({
   render: function() {
     return (
       <div className="col-xs-12 buffer">
@@ -35,4 +35,4 @@ var LocationContent = React.createClass({
 });
 
 window.__Wedding__ = window.__Wedding__ || {};
-window.__Wedding__.LocationContent = LocationContent;
+window.__Wedding__.DetailsContent = DetailsContent;
