@@ -40,6 +40,10 @@ var RSVPForm = React.createClass({
 			codeShow          : true,
 			formShow          : false,
 			submitShow        : false,
+			dietary						: false,
+			dietary_note			: '',
+			kids							: false,
+			kids_note					: '',
 		};
 	},
 	setRsvpState: function(e) {
@@ -61,16 +65,28 @@ var RSVPForm = React.createClass({
 	},
 	handleCountChange: function(e) {
 		this.setState({attendee_count: e.target.value});
-        this.setRsvpState("Submit");
+    this.setRsvpState("Submit");
 	},
 	handleAttendeeChange: function(e) {
 		var names = this.state.attendee_names;
 		names[e.target.id] = e.target.value;
 		this.setState({attendee_names: names});
 	},
-    handleModalClose: function(e) {
-        this.setState({modalShow: false})
-  	},
+	handleDietaryChange: function(e) {
+		this.setState({dietary: e.target.value});
+	},
+	handleDietaryNoteChange: function(e) {
+		this.setState({dietary_note: e.target.value});
+	},
+	handleKidsChange: function(e) {
+		this.setState({kids: e.target.value});
+	},
+	handleKidsNoteChange: function(e) {
+		this.setState({kids_note: e.target.value});
+	},
+  handleModalClose: function(e) {
+    this.setState({modalShow: false})
+  },
 	handleCodeCheck: function(e) {
 		e.preventDefault();
 		var rsvp_code = this.state.rsvp_code.trim();
@@ -88,26 +104,26 @@ var RSVPForm = React.createClass({
 			  console.log(data);
 			  if( data != null ) {
 			  	this.setState({allowedGuestCount: data.guest_count});
-          	  	this.setRsvpState("Form");
+          this.setRsvpState("Form");
 			  }
 			  else {
-        			this.setState({modalShow: true});
-				  	this.setState({modalContent: "RSVP Code could not be found"});
-          			this.setState({modalAlert: "danger"});
-          			this.setState({modalTitle: "Error"});
-          			this.setState({modalCloseButton: "Sorry!"});
+        	this.setState({modalShow: true});
+				  this.setState({modalContent: "RSVP Code could not be found"});
+          this.setState({modalAlert: "danger"});
+          this.setState({modalTitle: "Error"});
+          this.setState({modalCloseButton: "Sorry!"});
 					this.setState({rsvp_code: ''});
-          	  		this.setRsvpState("Start");
+          this.setRsvpState("Start");
 			  }
 		  }.bind(this),
 		  error: function(xhr, status, err) {
 			  if( xhr.status != 200 ) {
-        			this.setState({modalShow: true});
+        		this.setState({modalShow: true});
 				  	this.setState({modalContent: err.toString()});
-          			this.setState({modalAlert: "danger"});
-          			this.setState({modalTitle: "Error"});
-          			this.setState({modalCloseButton: "Sorry!"});
-          	  		this.setRsvpState("Start");
+          	this.setState({modalAlert: "danger"});
+          	this.setState({modalTitle: "Error"});
+          	this.setState({modalCloseButton: "Sorry!"});
+          	this.setRsvpState("Start");
 			  }
 			console.error(get_url, status, err.toString());
 		  }.bind(this)
@@ -118,21 +134,37 @@ var RSVPForm = React.createClass({
 		var rsvp_code = this.state.rsvp_code.trim();
 		var attendee_count = this.state.attendee_count;
 		var attendee_names = JSON.stringify(this.state.attendee_names);
+		var dietary = this.state.dietary;
+		var kids = this.state.kids;
 		if( !rsvp_code ) {
 			return;
 		}
 		if( attendee_count == -1 ) {
 			return;
 		}
+		if( dietary ) {
+			dietary = this.state.dietary_note;
+		}
+		if( kids ) {
+			kids = this.state.kids_note;
+		}
 		console.log( rsvp_code );
 		console.log( attendee_count );
 		console.log( attendee_names );
+		console.log( dietary );
+		console.log( kids );
 
 		$.ajax({
 		  url: this.props.submit_url,
 		  dataType: 'json',
 		  type: 'POST',
-		  data: { rsvp_code: rsvp_code, attendee_count: attendee_count, attendee_names: attendee_names },
+		  data: {
+				rsvp_code: rsvp_code,
+				attendee_count: attendee_count,
+				attendee_names: attendee_names,
+				dietary: dietary,
+				kids: kids
+			},
 		  success: function(data) {
 			  console.log(data);
 			  this.setState({modalShow: true});
@@ -150,11 +182,11 @@ var RSVPForm = React.createClass({
 		  }.bind(this),
 		  error: function(xhr, status, err) {
 			  if( xhr.status != 200 ) {
-        			this.setState({modalShow: true});
+        		this.setState({modalShow: true});
 				  	this.setState({modalContent: err.toString()});
-          			this.setState({modalAlert: "danger"});
-          			this.setState({modalTitle: "Error"});
-          			this.setState({modalCloseButton: "Sorry!"});
+          	this.setState({modalAlert: "danger"});
+          	this.setState({modalTitle: "Error"});
+          	this.setState({modalCloseButton: "Sorry!"});
 			  }
 			console.error(this.props.url, status, err.toString());
 		  }.bind(this)
@@ -224,10 +256,43 @@ var RSVPForm = React.createClass({
 							{option_rows}
 						</select>
 						{ this.state.attendee_count > 0
-							? <label>Please enter first and last names.</label>
+							?
+							<div>
+								<label>Please enter first and last names.</label>
+								{name_rows}
+								Please note the dinner will be buffet-style, no meal choice is required.
+								<label>Does any attendee have a special dietary requirement?</label>
+								<div className="input-group">
+									<input type="radio" name="dietary" value="false" onChange={this.handleDietaryChange}/>No
+									<input type="radio" name="dietary" value="true" onChange={this.handleDietaryChange}/>Yes
+									{ this.state.dietary == "true" ?
+										<input
+											type="text"
+											placeholder="Dietary notes..."
+											value={this.state.dietary_note}
+											onChange={this.handleDietaryNoteChange}
+										/>
+										: null
+									}
+								</div>
+
+								<label>Would any attendee prefer a kid's meal?</label>
+								<div className="input-group">
+									<input type="radio" name="kids" value="false" onChange={this.handleKidsChange}/>No
+									<input type="radio" name="kids" value="true" onChange={this.handleKidsChange}/>Yes
+									{ this.state.kids == "true" ?
+										<input
+											type="text"
+											placeholder="How many?"
+											value={this.state.kids_note}
+											onChange={this.handleKidsNoteChange}
+										/>
+										: null
+									}
+								</div>
+							</div>
 							: null
 						}
-						{name_rows}
 						{ this.state.submitShow ?
 						<input type="submit" value="Send RSVP"/>
 						: null }
