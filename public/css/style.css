@@ -4,6 +4,9 @@
 @font-face {
   font-family: Angeline;
   src: url("font/AngelineVintage.ttf"); }
+@font-face {
+  font-family: Markella;
+  src: url("font/Markella.ttf"); }
 body {
   font-size: 1.44em;
   font-family: 'Unna';
@@ -30,10 +33,13 @@ body {
       line-height: 1.95; } }
 
 h1 {
-  font-family: 'Angeline';
-  font-size: 3.6em;
+  font-family: 'Markella';
+  font-size: 2.4em;
   line-height: 1.05;
   margin-top: 1.5em; }
+  @media (min-width: 48em) {
+    h1 {
+      font-size: 3.6em; } }
   @media (min-width: 64em) {
     h1 {
       font-size: 3.84em; } }
@@ -43,24 +49,26 @@ h1 {
   @media (min-width: 120em) {
     h1 {
       font-size: 4.32em; } }
+  h1 small {
+    color: inherit; }
+  h1.date {
+    margin-top: 0.5em; }
 
-.bg-white {
-  background-color: white; }
-
-.bg-pink {
-  background-color: #ede1e1; }
-
-.bg-brown {
-  background-color: rgba(162, 141, 128, 0.6); }
-
-.bg-li-gray {
-  background-color: #A4A39A; }
-
-.text-white {
-  color: white; }
-
-.text-green {
-  color: #6B857C; }
+h2 {
+  font-weight: bold;
+  font-size: 1.8em; }
+  @media (min-width: 48em) {
+    h2 {
+      font-size: 2.4em; } }
+  @media (min-width: 64em) {
+    h2 {
+      font-size: 2.64em; } }
+  @media (min-width: 85.375em) {
+    h2 {
+      font-size: 2.88em; } }
+  @media (min-width: 120em) {
+    h2 {
+      font-size: 3.12em; } }
 
 hr {
   padding: 3em;
@@ -69,6 +77,28 @@ hr {
   background-size: 25%;
   background-position: 50%;
   border-top: none; }
+
+form {
+  text-align: left; }
+  form * {
+    margin: 5px; }
+  form input {
+    padding: 5px 10px;
+    background-color: white;
+    border-style: groove;
+    border-radius: 3px; }
+
+iframe {
+  border: .25em;
+  border-style: solid;
+  border-color: #A4A39A; }
+
+img {
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+img.core-img {
+  max-width: 100%; }
 
 .container {
   margin: 0 8%;
@@ -80,9 +110,6 @@ hr {
 
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute; }
-
-.top-padding {
-  padding-top: 1em; }
 
 .detail-content {
   text-align: left; }
@@ -100,28 +127,24 @@ hr {
       width: 50%;
       padding: .3em 2em .3em 2em; } }
 
-form {
-  text-align: left; }
-  form * {
-    margin: 5px; }
-  form input {
-    padding: 5px 10px;
-    background-color: white;
-    border-style: groove;
-    border-radius: 3px; }
+.hidden-small {
+  display: none; }
+  @media (min-width: 48em) {
+    .hidden-small {
+      display: block; } }
 
-h1 small {
-  color: inherit; }
-
-img {
-  padding-top: 1em;
-  padding-bottom: 1em; }
-
-img.core-img {
-  max-width: 100%; }
+.expand-small {
+  width: 100%; }
+  @media (min-width: 48em) {
+    .expand-small {
+      width: 41.666667%; } }
 
 .buffer {
-  padding-top: 15px; }
+  padding-top: 1em; }
+
+.page-header {
+  font-weight: bold;
+  letter-spacing: 2px; }
 
 .nav, .nav-tabs {
   color: black;

@@ -53,8 +53,8 @@ var AccomodationsContent = React.createClass({
 	});
 
     return (
-      <div className="col-xs-12 buffer">
-        <h2>Hotels Nearby</h2>
+      <div className="buffer">
+        <h3 className="page-header">HOTELS NEARBY</h3>
         <p>
 			       There are many hotels in downtown Milwaukee.  Here are a few but they may not be the closest.  Just the top listed Trip Advisor hotels.
 		    </p>
