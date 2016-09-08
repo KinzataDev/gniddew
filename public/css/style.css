@@ -71,12 +71,18 @@ h2 {
       font-size: 3.12em; } }
 
 hr {
-  padding: 3em;
-  background: url("../img/watercolor-leaves-2.png");
+  background: url("../img/branch-divider2.png");
   background-repeat: no-repeat;
-  background-size: 25%;
   background-position: 50%;
-  border-top: none; }
+  border-top: none;
+  padding: 1em;
+  background-size: 60%; }
+  @media (min-width: 450px) {
+    hr {
+      padding: 3em; } }
+  @media (min-width: 48em) {
+    hr {
+      background-size: 50%; } }
 
 form {
   text-align: left; }
@@ -91,14 +97,46 @@ form {
 iframe {
   border: .25em;
   border-style: solid;
-  border-color: #A4A39A; }
+  border-color: #B1C5B6;
+  margin-top: 1.5em; }
 
 img {
   padding-top: 1em;
   padding-bottom: 1em; }
 
 img.core-img {
-  max-width: 100%; }
+  max-width: 150%;
+  left: -25%;
+  position: relative; }
+  @media (min-width: 64em) {
+    img.core-img {
+      max-width: 100%;
+      left: 0; } }
+
+img.cat-img {
+  width: 15em; }
+  @media (min-width: 48em) {
+    img.cat-img {
+      width: 20em; } }
+
+a.map-button {
+  padding: .5em 1em;
+  border-width: .2em;
+  border-style: solid;
+  border-radius: .5em;
+  text-decoration: none;
+  letter-spacing: 2px;
+  max-width: 20%;
+  min-width: 100px;
+  text-align: center;
+  border-color: #5F8068;
+  background-color: #7DA988;
+  color: white; }
+
+a.map-button:hover {
+  background-color: #A29364;
+  border-color: #867645;
+  color: white; }
 
 .container {
   margin: 0 8%;
@@ -126,6 +164,12 @@ img.core-img {
     .hotel-content {
       width: 50%;
       padding: .3em 2em .3em 2em; } }
+
+.hidden-large {
+  display: block; }
+  @media (min-width: 48em) {
+    .hidden-large {
+      display: none; } }
 
 .hidden-small {
   display: none; }

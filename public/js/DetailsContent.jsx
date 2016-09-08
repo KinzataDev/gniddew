@@ -1,5 +1,8 @@
 var DetailsContent = React.createClass({
   render: function() {
+    var cuvee_link = "https://www.google.com/maps/place/Cuvee/@43.032052,-87.907477,15z/data=!4m5!3m4!1s0x0:0x4872d2855f5a246f!8m2!3d43.032052!4d-87.9074774?hl=en-US";
+    var parking_link = "https://www.google.com/maps/place/225+E+Chicago+St,+Milwaukee,+WI+53202/@43.032557,-87.90891,15z/data=!4m5!3m4!1s0x880519a465863183:0x620f67f50831633a!8m2!3d43.0325565!4d-87.90891?hl=en-US";
+
     return (
       <div className="buffer">
         <div className="row">
@@ -7,7 +10,9 @@ var DetailsContent = React.createClass({
               <h2>Cuvee Champagne Lounge</h2>
               <h4>177 North Broadway, 3rd Floor</h4>
               <p>Ceremony at 4:30pm<br/>
-              Cocktail hour and dinner to immediately follow</p>
+              Cocktail hour and dinner to immediately follow
+              </p>
+              <a className="map-button hidden-large" href={cuvee_link}>MAP</a>
             </div>
             <div className="col-xs-7 hidden-small">
               <iframe
@@ -21,11 +26,12 @@ var DetailsContent = React.createClass({
         <div className="row">
             <div className="col-xs-5 detail-content expand-small">
               <h2>Parking</h2>
-        			<p>There is a parking structure just around the corner from Cuvee.</p>
+        			<p>There is a parking structure just around the corner from Cuvee.  It should cost about $10.</p>
         			<p>
-        			Information for this structure specifically is available <a href="http://www.parkmilwaukee.com/facilities/75-historic-third-ward-water-street-structure">here</a>.
-        			There is also street parking in the area however the 3rd Ward Art Festival is taking place at the same time as our wedding, so parking may be tight.  Because of this event, rates at the structure may also be higher than posted on the site...
+              The <b><a href="http://www.historicthirdward.org/events/thirdwardartfestival.php">3rd Ward Art Festival</a></b> will be taking place <b>during</b> our wedding!  In fact, it will be right outside the front door to Cuvee!  Street parking will be limited so please give yourself
+              enough time to find parking if you will not be using the structure.  The event is free though so you are welcome to come early and window shop!
         			</p>
+              <a className="map-button hidden-large" href={parking_link}>MAP</a>
             </div>
             <div className="col-xs-7 hidden-small">
         			<iframe

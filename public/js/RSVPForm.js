@@ -193,6 +193,11 @@ var RSVPForm = React.createClass({
 		});
 	},
 	render: function() {
+		return (
+			<div className="buffer">
+				<h3 className="page-header">Actual invitations will be sent out summer 2017!</h3>
+			</div>
+		);
 		var name_rows = [];
 		var option_rows = [];
 

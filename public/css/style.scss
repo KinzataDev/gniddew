@@ -4,6 +4,7 @@ $bp-large: 85.375em; // 1366px
 $bp-xlarge: 120em; // 1920px
 $bp-xxlarge: 160em; // 2560px
 
+$mq-xsmall: "(min-width: 450px)";
 $mq-small: "(min-width: #{$bp-small})";
 $mq-medium: "(min-width: #{$bp-medium})";
 $mq-large: "(min-width: #{$bp-large})";
@@ -21,12 +22,19 @@ $header-line-height: 1.25;
 
 // Colors
 $white: white;
+$light-green: #B1C5B6;
 $light-pink: #EDE1E1;
 $light-gray: #A4A39A;
 $dark-green: #6B857C;
 $brown: #A28D80;
 $dark-gray: #525145;
 $black: #000000;
+
+$button-border: #5F8068;
+$button-background: #7DA988;
+
+$button-background-highlight: #A29364;
+$button-border-highlight: #867645;
 
 // Fonts
 @font-face { font-family: Arabella; src: url('font/Arabella.ttf'); }
@@ -45,15 +53,6 @@ body {
   background-size: contain, cover;
   background-position-x: center, center;
   background-repeat: no-repeat, no-repeat;
-
-  // background-image: url("../img/glitter02.png");
-  // background-attachment: local;
-  // background-size: contain;
-  // background-position-x: center;
-  // background-repeat: no-repeat;
-  // background-color: rgba($white, 0.2);
-  // background-size: cover;
-  // background-blend-mode: screen;
 
 	@media #{$mq-medium} {
 		font-size: $base-font-size*1.3;
@@ -126,12 +125,21 @@ h2 {
 }
 
 hr {
-	padding: 3em;
-	background: url('../img/watercolor-leaves-2.png');
+	background: url('../img/branch-divider2.png');
 	background-repeat: no-repeat;
-	background-size: 25%;
 	background-position: 50%;
 	border-top: none;
+	// Putting this after the background image matters! TIL
+	padding: 1em;
+	background-size: 60%;
+
+	@media #{$mq-xsmall} {
+		padding: 3em;
+	}
+
+	@media #{$mq-small} {
+		background-size: 50%;
+	}
 }
 
 form {
@@ -152,7 +160,8 @@ form {
 iframe {
 	border: .25em;
 	border-style: solid;
-	border-color: $light-gray;
+	border-color: $light-green;
+	margin-top: 1.5em;
 }
 
 img {
@@ -161,32 +170,52 @@ img {
 }
 
 img.core-img {
-	max-width: 100%;
+	max-width: 150%;
+	left: -25%;
+	position: relative;
 
-	// @media #{$mq-medium} {
-	// 	max-width: $bp-large;
-	// }
-	//
-	// @media #{$mq-large} {
-	// 	max-width: $bp-xlarge;
-	// }
+
+	@media #{$mq-medium} {
+		max-width: 100%;
+		left: 0;
+	}
+}
+
+img.cat-img {
+	width: 15em;
+
+	@media #{$mq-small} {
+		width: 20em;
+	}
+}
+
+a.map-button {
+	padding: .5em 1em;
+	border-width: .2em;
+	border-style: solid;
+	border-radius: .5em;
+	text-decoration: none;
+
+	letter-spacing: 2px;
+
+	max-width: 20%;
+	min-width: 100px;
+	text-align: center;
+
+	border-color: $button-border;
+	background-color: $button-background;
+	color: white;
+}
+
+a.map-button:hover {
+	background-color: $button-background-highlight;
+	border-color: $button-border-highlight;
+	color: white;
 }
 
 .container {
 	margin: 0 8%;
 	width: auto;
-
-	// @media #{$mq-medium} {
-  //  		margin: 0 8%;
-  // 	}
-	// @media #{$mq-large} {
-  // 	margin: 0 12%;
-	// }
-	//
-	// @media #{$mq-xlarge} {
-  // 	margin: 0 18%;
-	// }
-
 	position: relative;
 }
 
@@ -216,6 +245,14 @@ img.core-img {
 	}
 }
 
+.hidden-large {
+	display: block;
+
+	@media #{$mq-small} {
+		display: none;
+	}
+}
+
 .hidden-small {
 	display: none;
 
@@ -228,7 +265,7 @@ img.core-img {
 	width: 100%;
 
 	@media #{$mq-small} {
-		width: 41.666667%;
+		width: 41.666667%; // Could not find a better way than hard coding this.
 	}
 }
 

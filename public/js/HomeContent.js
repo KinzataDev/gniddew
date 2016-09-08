@@ -9,7 +9,7 @@ var HomeContent = React.createClass({
 				<h2>Please join us for our wedding celebration</h2>
 				<h1 className="date">September 2nd, 2017</h1>
 
-				<img src="http://placehold.it/200x200"></img>
+				<img className="cat-img" src="img/cats-01.png"></img>
 
 			</div>
 			</div>
