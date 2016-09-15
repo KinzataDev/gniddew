@@ -25,7 +25,7 @@ $white: white;
 $light-green: #B1C5B6;
 $light-pink: #EDE1E1;
 $light-gray: #A4A39A;
-$dark-green: #6B857C;
+$dark-green: #5F8068;
 $brown: #A28D80;
 $dark-gray: #525145;
 $black: #000000;
@@ -329,5 +329,5 @@ a.map-button:hover {
 .nav-tabs>li>a:hover {
 	border: none;
 	background-color: inherit;
-	color: red;
+	color: $button-background;
 }

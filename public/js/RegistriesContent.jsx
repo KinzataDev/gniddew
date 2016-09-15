@@ -4,7 +4,7 @@ var RegistriesContent = React.createClass({
     return (
       <div className="buffer">
         <h3 className="page-header">REGISTERED AT</h3>
-		    <p>Nowhere currently!  Please check back summer 2017!</p>
+		    <p>Please check back summer 2017!</p>
       </div>
     );
   }

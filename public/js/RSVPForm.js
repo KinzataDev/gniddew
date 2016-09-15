@@ -195,7 +195,7 @@ var RSVPForm = React.createClass({
 	render: function() {
 		return (
 			<div className="buffer">
-				<h3 className="page-header">Actual invitations will be sent out summer 2017!</h3>
+				<h3 className="page-header">Formal invitations to follow with RSVP instructions.</h3>
 			</div>
 		);
 		var name_rows = [];

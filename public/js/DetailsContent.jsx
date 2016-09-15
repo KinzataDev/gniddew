@@ -26,10 +26,11 @@ var DetailsContent = React.createClass({
         <div className="row">
             <div className="col-xs-5 detail-content expand-small">
               <h2>Parking</h2>
-        			<p>There is a parking structure just around the corner from Cuvee.  It should cost about $10.</p>
+        			<p>There are two parking structures located near Cuvee: 212 N. Milwaukee St and 225 E. Chicago St.  The cost to park is approximately $10.00.</p>
         			<p>
-              The <b><a href="http://www.historicthirdward.org/events/thirdwardartfestival.php">3rd Ward Art Festival</a></b> will be taking place <b>during</b> our wedding!  In fact, it will be right outside the front door to Cuvee!  Street parking will be limited so please give yourself
-              enough time to find parking if you will not be using the structure.  The event is free though so you are welcome to come early and window shop!
+              The <b><a href="http://www.historicthirdward.org/events/thirdwardartfestival.php">3rd Ward Art Festival</a></b> will be happening <b>during</b> our wedding and
+              will take place on the street in front of Cuvee.  Street parking will be limited so please give yourself
+              enough time to find parking if you will not be using the structure.  The festival is free - feel welcome to arrive early and browse the artwork!
         			</p>
               <a className="map-button hidden-large" href={parking_link}>MAP</a>
             </div>
