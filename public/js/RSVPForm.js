@@ -40,10 +40,10 @@ var RSVPForm = React.createClass({
 			codeShow          : true,
 			formShow          : false,
 			submitShow        : false,
-			dietary						: false,
-			dietary_note			: '',
-			kids							: false,
-			kids_note					: '',
+			dietary			  : false,
+			dietary_note	  : '',
+			kids			  : false,
+			kids_note		  : '',
 		};
 	},
 	setRsvpState: function(e) {
@@ -142,12 +142,8 @@ var RSVPForm = React.createClass({
 		if( attendee_count == -1 ) {
 			return;
 		}
-		if( dietary ) {
-			dietary = this.state.dietary_note;
-		}
-		if( kids ) {
-			kids = this.state.kids_note;
-		}
+		dietary = this.state.dietary_note;
+		kids    = this.state.kids_note;
 		console.log( rsvp_code );
 		console.log( attendee_count );
 		console.log( attendee_names );

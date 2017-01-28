@@ -7,3 +7,4 @@ requires 'Moose';
 requires 'MooseX::ClassAttribute';
 requires 'IO::Socket::SSL';
 requires 'Mojo::Server::Morbo';
+requires 'Email::Sender';
