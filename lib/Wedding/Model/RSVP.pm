@@ -3,9 +3,12 @@ package Wedding::Model::RSVP;
 use Mojo::Base -base;
 use Wedding::Model::RSVPAttendee;
 use Wedding;
+use Wedding::Config;
 
-#has 'mysql';
-#has 'rsvp_attendee';
+use Email::Sender::Simple qw(sendmail);
+use Email::Simple;
+use Email::Simple::Creator;
+
 has 'firebase';
 
 sub rsvps { return shift->firebase->get('rsvp'); }
@@ -60,7 +63,49 @@ sub post_response {
 		$self->firebase->patch("attendees/$name", $attendee_data);
 	}
 
+	$self->email_response_info( $data );
 	return 1;
+}
+
+sub email_response_info {
+	my $self = shift;
+	my $data = shift;
+
+	my $config = Wedding::Config->_config;
+
+	my $rsvp_code = $data->{rsvp_code};
+	my @names;
+	foreach my $obj (keys %{$data->{attendee_names}}) {
+		push @names, $data->{attendee_names}->{$obj};
+	}
+	my $name_string = join "\n\t\t", @names;
+	my $make_it = $data->{is_coming} ? "Yes":"No";
+	my $dietary = $data->{dietary} // "No restrictions";
+	my $kids    = $data->{kids} // "None";
+
+	my $body = <<"END_MESSAGE";
+RSVP response received:
+
+	RSVP Code:             $rsvp_code
+	Can they make it:      $make_it
+	Dietary restrictions:   $dietary
+	Kids meals:               $kids
+	Attendees:
+		$name_string
+END_MESSAGE
+
+	my $email = Email::Simple->create(
+	  header => [
+		To      => $config->{email_to_header},
+		From    => $config->{email_from_header},
+		Subject => "Wedding RSVP",
+	  ],
+	  body => $body,
+	);
+
+	sendmail($email);
+
+
 }
 
 1;

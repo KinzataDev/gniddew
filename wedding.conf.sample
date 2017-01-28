@@ -3,6 +3,9 @@ schema_class Wedding::Schema
 firebase_url <url>
 firebase_secret <secret>
 
+email_to_header	email
+email_from_header email
+
 # dbic loader options
 <loader_options>
     dump_directory ./lib
