@@ -44,7 +44,9 @@ sub post_response {
 	$self->firebase->patch("rsvp/$rsvp_code", {
 		has_responded => $data->{has_responded},
 		is_coming => $data->{is_coming},
-		attendees => $data->{attendee_names}
+		attendees => $data->{attendee_names},
+		dietary   => $data->{dietary} // "N/A",
+		kids      => $data->{kids} // "N/A"
 	});
 
 	foreach my $key ( keys %{$data->{attendee_names}} ) {

@@ -90,6 +90,12 @@ post '/rsvpsubmit' => sub {
 				attendee_names
 			/
 		],
+    optional => [
+      qw/
+        dietary
+        kids
+      /
+    ]
 	};
 
 	my $results = Data::FormValidator->check( $data, $form_profile );

@@ -2,9 +2,9 @@ var RegistriesContent = React.createClass({
 
   render: function() {
     return (
-      <div className="col-xs-12 buffer">
-        <h2>Registries</h2>
-		<p>Check back later!</p>
+      <div className="buffer">
+        <h3 className="page-header">REGISTERED AT</h3>
+		    <p>Please check back summer 2017!</p>
       </div>
     );
   }
