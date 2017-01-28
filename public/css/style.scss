@@ -164,6 +164,16 @@ iframe {
 	margin-top: 1.5em;
 }
 
+th {
+	text-align: center;
+}
+
+table {
+	width: 80%;
+}
+
+td { white-space:pre }
+
 img {
 	padding-top: 1em;
 	padding-bottom: 1em;
@@ -211,6 +221,10 @@ a.map-button:hover {
 	background-color: $button-background-highlight;
 	border-color: $button-border-highlight;
 	color: white;
+}
+
+.blank-background {
+	background-image: none;
 }
 
 .container {

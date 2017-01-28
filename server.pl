@@ -44,6 +44,10 @@ get '/' => sub {
 	shift->reply->static('index.html');
 };
 
+get '/admin/rsvp_results' => sub {
+	shift->reply->static('rsvp_results.html');
+};
+
 get '/inputdata' => sub {
 	my $self = shift;
 
