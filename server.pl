@@ -125,4 +125,8 @@ post '/rsvpsubmit' => sub {
     $c->render( json => { status => 200, success => 1 } );
 };
 
+get '/*' => sub {
+	shift->reply->static('index.html');
+};
+
 app->start;
