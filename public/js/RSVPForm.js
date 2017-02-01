@@ -44,6 +44,7 @@ var RSVPForm = React.createClass({
 			dietary_note	  : '',
 			kids			  : false,
 			kids_note		  : '',
+			show_rsvp_page    : 0
 		};
 	},
 	setRsvpState: function(e) {
@@ -59,6 +60,22 @@ var RSVPForm = React.createClass({
 	},
 	resetState: function(e) {
 		this.setState(this.getInitialState());
+	},
+	get_config_data: function(e) {
+		$.ajax({
+			url: '/admin/config',
+			dataType: 'json',
+			type: 'GET',
+			success: function(data) {
+				this.setState({show_rsvp_page: data.show_rsvp_page});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error('/admin/config', status, err.toString());
+			}.bind(this),
+		});
+	},
+	componentWillMount() {
+		this.get_config_data();
 	},
 	handleCodeChange: function(e) {
 		this.setState({rsvp_code: e.target.value});
@@ -189,11 +206,13 @@ var RSVPForm = React.createClass({
 		});
 	},
 	render: function() {
-		return (
-			<div className="buffer">
-				<h3 className="page-header">Formal invitations to follow with RSVP instructions.</h3>
-			</div>
-		);
+		if( !this.state.show_rsvp_page ) {
+			return (
+				<div className="buffer">
+					<h3 className="page-header">Formal invitations to follow with RSVP instructions.</h3>
+				</div>
+			);
+		}
 		var name_rows = [];
 		var option_rows = [];
 

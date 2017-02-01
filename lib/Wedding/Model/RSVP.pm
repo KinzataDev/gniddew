@@ -19,16 +19,6 @@ sub rsvp {
 	return $self->firebase->get('rsvp/' . $rsvp_code);
 }
 
-sub select_with_rsvp_code {
-    my $self      = shift;
-    my $rsvp_code = shift;
-
-    return $self->mysql->db->query(    #
-        'SELECT * FROM rsvp WHERE rsvp_code = ?',    #
-        $rsvp_code
-    );
-}
-
 sub post_response {
     my $self      = shift;
     my $rsvp_code = shift;
@@ -70,6 +60,9 @@ sub post_response {
 sub email_response_info {
 	my $self = shift;
 	my $data = shift;
+
+	# Return if disabled
+	return unless $self->firebase->get('config')->{is_email_enabled};
 
 	my $config = Wedding::Config->_config;
 

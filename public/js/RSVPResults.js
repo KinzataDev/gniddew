@@ -31,8 +31,12 @@ var RSVPResults = React.createClass({
 				var text = row.attendees[name_key] + "\n";
 				name_string += text;
 			}
+			var is_coming_class = "";
+			if( row.is_coming != undefined ) {
+				is_coming_class = 'row-coming-' + row.is_coming;
+			}
 			data_rows.push(
-			<tr key={key}>
+			<tr key={key} className={is_coming_class}>
 				<td>{key}</td>
 				<td>{row.is_coming}</td>
 				<td>{name_string}</td>

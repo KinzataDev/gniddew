@@ -62,6 +62,12 @@ get '/inputdata' => sub {
 	});
 };
 
+get '/admin/config' => sub {
+	my $c = shift;
+
+	$c->render( json => $fb->get('config') );
+};
+
 get '/rsvp' => sub {
 	my $c = shift;
 
