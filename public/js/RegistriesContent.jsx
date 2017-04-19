@@ -30,6 +30,11 @@ var RegistriesContent = React.createClass({
 				</div>
 			);
 		}
+		else {
+			return (
+				<div></div>
+			);
+		}
 	}
 });
 

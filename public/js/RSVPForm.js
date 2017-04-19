@@ -44,7 +44,7 @@ var RSVPForm = React.createClass({
 			dietary_note	  : '',
 			kids			  : false,
 			kids_note		  : '',
-			show_rsvp_page    : 0
+			show_rsvp_page    : 1
 		};
 	},
 	setRsvpState: function(e) {
@@ -151,16 +151,14 @@ var RSVPForm = React.createClass({
 		var rsvp_code = this.state.rsvp_code.trim();
 		var attendee_count = this.state.attendee_count;
 		var attendee_names = JSON.stringify(this.state.attendee_names);
-		var dietary = this.state.dietary;
-		var kids = this.state.kids;
+        var dietary = this.state.dietary_note;
+        var kids    = this.state.kids_note;
 		if( !rsvp_code ) {
 			return;
 		}
 		if( attendee_count == -1 ) {
 			return;
 		}
-		dietary = this.state.dietary_note;
-		kids    = this.state.kids_note;
 		console.log( rsvp_code );
 		console.log( attendee_count );
 		console.log( attendee_names );
@@ -183,6 +181,7 @@ var RSVPForm = React.createClass({
 			  this.setState({modalShow: true});
 			  this.setState({modalAlert: "success"});
 			  this.setState({modalTitle: "Success"});
+              this.resetState();
 			  if( attendee_count == 0 ) {
 				  this.setState({modalContent: "Sorry to hear you won't be making it!"});
 				  this.setState({modalCloseButton: "We'll have a pint for you."});
@@ -191,7 +190,6 @@ var RSVPForm = React.createClass({
 				  this.setState({modalContent: "Thank you for submitting your RSVP!"});
 				  this.setState({modalCloseButton: "Woo wedding!"});
 			  }
-			  this.resetState();
 		  }.bind(this),
 		  error: function(xhr, status, err) {
 			  if( xhr.status != 200 ) {
