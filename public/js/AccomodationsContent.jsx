@@ -49,7 +49,6 @@ var AccomodationsContent = React.createClass({
                     <p>{row.blurb}</p>
                 </div>
             );
-            return;
         });
 
         return (
