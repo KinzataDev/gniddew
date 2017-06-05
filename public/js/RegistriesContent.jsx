@@ -27,23 +27,26 @@ var RegistriesContent = React.createClass({
             {
                 name: "Sur la Table",
                 logo: "/img/Sur-la-table-cropped.png",
-                url: "https://www.surlatable.com/registry/giftRegistryList.jsp?id=2001792023441"
+                url: "https://www.surlatable.com/registry/giftRegistryList.jsp?id=2001792023441",
+                className: "registry-img"
             },
             {
                 name: "Target",
                 logo: "/img/Target_logo.svg",
-                url: "http://tgt.gifts/15813192b9dd41438ad49177869fb037"
+                url: "http://tgt.gifts/15813192b9dd41438ad49177869fb037",
+                className: "registry-img-sm"
             },
             {
                 name: "Amazon",
                 logo: "/img/Amazon_logo_plain.png",
-                url: "https://www.amazon.com/wedding/maximilian-witte-rachel-dubinski-milwaukee-september-2017/registry/2CKN6G9EXQU75"
+                url: "https://www.amazon.com/wedding/maximilian-witte-rachel-dubinski-milwaukee-september-2017/registry/2CKN6G9EXQU75",
+                className: "registry-img"
             },
         ];
 
         registry_data.map(function (row) {
             registry_rows.push(
-                <a href={row.url} target="_blank" key={row.name}><img className="registry-img" src={row.logo} alt={row.name}/></a>
+                <a href={row.url} target="_blank" key={row.name}><img className={row.className} src={row.logo} alt={row.name}/></a>
             );
         });
 

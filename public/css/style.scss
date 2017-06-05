@@ -203,14 +203,14 @@ img.cat-img {
 img.registry-img {
   width: 15em;
   margin: 1.5em;
-  //@media #{$mq-small} {
-  //  width: 15em;
-  //}
 }
-img.registry-img:hover {
+img.registry-img-sm {
+	width: 11em;
+	margin: 1.5em;
+}
+img.registry-img:hover img.registry-img-sm:hover{
     box-shadow: 0px 0px 12px 8px $button-border-alpha;
     background-color: $button-border-alpha;
-
 }
 
 a.map-button {
