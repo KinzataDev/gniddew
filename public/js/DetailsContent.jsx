@@ -9,7 +9,7 @@ var DetailsContent = React.createClass({
                     <div className="col-xs-5 detail-content expand-small">
                         <h2>Cuvee Champagne Lounge</h2>
                         <h4>177 North Broadway, 3rd Floor</h4>
-                        <p>Ceremony at 4:30pm<br/>
+                        <p>Ceremony at 4:00pm<br/>
                             Cocktail hour and dinner to immediately follow
                         </p>
                         <a className="map-button hidden-large" href={cuvee_link}>MAP</a>
