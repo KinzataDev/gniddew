@@ -183,11 +183,11 @@ var RSVPForm = React.createClass({
                 this.setState({modalTitle: "Success"});
                 this.resetState();
                 if (attendee_count == 0) {
-                    this.setState({modalContent: "Sorry to hear you won't be making it!"});
-                    this.setState({modalCloseButton: "We'll have a pint for you."});
+                    this.setState({modalContent: "Sorry to hear you won't be able to attend."});
+                    this.setState({modalCloseButton: "We'll be thinking of you!"});
                 }
                 else {
-                    this.setState({modalContent: "Thank you for submitting your RSVP!"});
+                    this.setState({modalContent: "Thank you.  We look forward to celebrating with you!"});
                     this.setState({modalCloseButton: "Woo wedding!"});
                 }
             }.bind(this),
