@@ -9,3 +9,7 @@ requires 'IO::Socket::SSL';
 requires 'Net::SSLeay';
 requires 'Mojo::Server::Morbo';
 requires 'Email::Sender';
+requires 'Getopt::Long::Descriptive';
+requires 'Path::Class::File';
+requires 'Dir::Self';
+requires 'Try::Tiny';
