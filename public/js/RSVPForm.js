@@ -237,7 +237,7 @@ var RSVPForm = React.createClass({
         if (this.state.attendee_count > 0) {
             for (var i = 0; i < this.state.attendee_count; i++) {
                 var key = "name_" + (i + 1); // First name is 0th record
-                name_rows.push(<input required pattern="^\w+ \w+$" title="First Last" type="text"
+                name_rows.push(<input required pattern="^((\w+\s+\w+)|(\w+(\s+)?){2,})$" title="First Last" type="text"
                                       className="form-control" onChange={this.handleAttendeeChange} key={key}
                                       id={key}/>);
             }
