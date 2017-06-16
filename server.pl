@@ -77,7 +77,7 @@ get '/rsvp' => sub {
 get '/rsvp/:id' => sub {
 	my $c = shift;
 
-	$c->render( json => $c->rsvp->rsvp($c->stash('id')));
+	$c->render( json => $c->rsvp->rsvp(uc $c->stash('id')));
 };
 
 get '/rsvpattendee' => sub {
@@ -119,7 +119,7 @@ post '/rsvpsubmit' => sub {
 	}
 
 	# Make sure that the row with that rsvp_code exists
-	my $res = $c->rsvp->rsvp($data->{rsvp_code});
+	my $res = $c->rsvp->rsvp(uc $data->{rsvp_code});
 	if( !defined $res ) {
 		$c->res->message('RSVP Code not found, please make sure you entered it correctly.');
 		$c->rendered(404);
