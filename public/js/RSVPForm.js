@@ -281,7 +281,7 @@ var RSVPForm = React.createClass({
                                     <div>
                                         <label>Please enter first and last names.</label>
                                         {name_rows}
-                                        Please note the dinner will be buffet-style, no meal choice is required.
+                                        Please note the dinner will be buffet-style, no meal choice is required.<br/>
                                         <label>Does any attendee have a special dietary requirement?</label>
                                         <div className="input-group">
                                             <input type="radio" name="dietary" value="false"
