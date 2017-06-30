@@ -324,6 +324,7 @@ var RSVPForm = React.createClass({
                             </div>
                         </form>
                         : null }
+                    <h5>Having trouble with your RSVP?  Email us at <a href="mailto:wedding.witte@gmail.com">wedding.witte@gmail.com</a></h5>
                 </div>
                 <div className="col-xs-2"></div>
             </div>
