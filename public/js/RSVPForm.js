@@ -42,8 +42,6 @@ var RSVPForm = React.createClass({
             submitShow: false,
             dietary: false,
             dietary_note: '',
-            kids: false,
-            kids_note: '',
             show_rsvp_page: 1
         };
     },
@@ -94,12 +92,6 @@ var RSVPForm = React.createClass({
     },
     handleDietaryNoteChange: function (e) {
         this.setState({dietary_note: e.target.value});
-    },
-    handleKidsChange: function (e) {
-        this.setState({kids: e.target.value});
-    },
-    handleKidsNoteChange: function (e) {
-        this.setState({kids_note: e.target.value});
     },
     handleModalClose: function (e) {
         this.setState({modalShow: false})
@@ -152,7 +144,6 @@ var RSVPForm = React.createClass({
         var attendee_count = this.state.attendee_count;
         var attendee_names = JSON.stringify(this.state.attendee_names);
         var dietary = this.state.dietary_note;
-        var kids = this.state.kids_note;
         if (!rsvp_code) {
             return;
         }
@@ -163,7 +154,6 @@ var RSVPForm = React.createClass({
         console.log(attendee_count);
         console.log(attendee_names);
         console.log(dietary);
-        console.log(kids);
 
         $.ajax({
             url: this.props.submit_url,
@@ -173,8 +163,7 @@ var RSVPForm = React.createClass({
                 rsvp_code: rsvp_code,
                 attendee_count: attendee_count,
                 attendee_names: attendee_names,
-                dietary: dietary,
-                kids: kids
+                dietary: dietary
             },
             success: function (data) {
                 console.log(data);
@@ -294,23 +283,6 @@ var RSVPForm = React.createClass({
                                                     placeholder="Dietary notes..."
                                                     value={this.state.dietary_note}
                                                     onChange={this.handleDietaryNoteChange}
-                                                />
-                                                : null
-                                            }
-                                        </div>
-
-                                        <label>Would any attendee prefer a kid's meal?</label>
-                                        <div className="input-group">
-                                            <input type="radio" name="kids" value="false"
-                                                   onChange={this.handleKidsChange}/>No
-                                            <input type="radio" name="kids" value="true"
-                                                   onChange={this.handleKidsChange}/>Yes
-                                            { this.state.kids == "true" ?
-                                                <input
-                                                    type="text"
-                                                    placeholder="How many?"
-                                                    value={this.state.kids_note}
-                                                    onChange={this.handleKidsNoteChange}
                                                 />
                                                 : null
                                             }
