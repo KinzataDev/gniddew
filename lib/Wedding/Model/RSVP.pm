@@ -91,7 +91,7 @@ END_MESSAGE
 	  header => [
 		To      => $config->{email_to_header},
 		From    => $config->{email_from_header},
-		Subject => "Wedding RSVP",
+		Subject => "Wedding RSVP from $rsvp_code",
 	  ],
 	  body => $body,
 	);
